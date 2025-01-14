@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .calculadora {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: gray;
+        }
+
+        #display {
+            width: 80%;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        button {
+            padding: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="display" disabled>
+        <button style="width: 60px;height: 60px; background-color: orange;" onclick="limparDisplay()">C</button>
+        <div class="botoes">
+            <button onclick="adicionarAoDisplay('7')">7</button>
+            <button onclick="adicionarAoDisplay('8')">8</button>
+            <button onclick="adicionarAoDisplay('9')">9</button>
+            <button onclick="adicionarAoDisplay('/')">/</button>
+            <button onclick="adicionarAoDisplay('4')">4</button>
+            <button onclick="adicionarAoDisplay('5')">5</button>
+            <button onclick="adicionarAoDisplay('6')">6</button>
+            <button onclick="adicionarAoDisplay('*')">x</button>
+            <button onclick="adicionarAoDisplay('1')">1</button>
+            <button onclick="adicionarAoDisplay('2')">2</button>
+            <button onclick="adicionarAoDisplay('3')">3</button>
+            <button onclick="adicionarAoDisplay('-')">-</button>
+            <button onclick="adicionarAoDisplay('+')">+</button>
+            <button onclick="adicionarAoDisplay('0')">0</button>
+            <button onclick="calcularResultado()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function adicionarAoDisplay(valor) {
+            document.getElementById("display").value += valor;
+        }
+
+        function limparDisplay() {
+            document.getElementById("display").value = '';
+        }
+
+       
+        function calcularResultado() {
+            const display = document.getElementById("display");
+            let resultado = display.value;
+
+            try {
+                let resultadoCalculado = eval(resultado); 
+                if (isNaN(resultadoCalculado)) {
+                    throw new Error("Resultado inválido");
+                }
+
+                display.value = resultadoCalculado; 
+            } catch (erro) {
+                display.value = 'Erro';  
+                setTimeout(limparDisplay, 1500);  
+            }
+        }
+    </script>
+</body>
+</html>

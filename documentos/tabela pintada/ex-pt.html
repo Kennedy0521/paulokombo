@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <table border="3">
+        <tr>
+            <th onclick="passarlivros()">Livros</th>
+            <th class="paginas" onclick="passarpaginas()">Paginas</th>
+        </tr>
+        <tr>
+            <td class="livros">Introdução ao Calculo diferencial 1</td>
+            <td class="paginas"> 67</td>
+        </tr>
+        <tr>
+            <td class="livros">Pai Rico Pai Pobre</td>
+            <td class="paginas"> 200</td>
+        </tr>
+        <tr>
+            <td class="livros">A riqueza da vida simples</td>
+            <td class="paginas">398</td>
+        </tr>
+        <tr>
+            <td class="livros">O homem mais rico da Babilonia</td>
+            <td class="paginas">400</td>
+        </tr>
+        <tr>
+            <td class="livros">O principezinho</td>
+            <td class="paginas">17</td>
+        </tr>
+    </table>
+
+    <script>
+        function passarlivros(){
+            var grupo = document.getElementsByClassName('livros')
+            var outro =  document.getElementsByClassName('paginas')
+            for(var i=0; i<5; i++){
+                grupo[i].style= "background-color: green"
+
+            }
+            for(var i=0; i<6; i++){
+                outro[i].style= "background-color: none"
+
+            }
+        }
+
+        
+        function passarpaginas(){
+            var grupo = document.getElementsByClassName('paginas')
+            for(var i=0; i<6; i++){
+                grupo[i].style= "background-color: blue"
+
+            }
+            var outro = document.getElementsByClassName('livros')
+            for(var i=0; i<5; i++){
+                outro[i].style= "background-color: none"
+
+            }
+        }
+        
+    </script>
+</body>
+</html>

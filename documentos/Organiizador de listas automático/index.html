@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        #formulario {
+            display: flex;
+            flex-direction: column;
+        }
+        #lista {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="formulario">
+    <h2>Lista de Compras</h2>
+    <input type="text" id="item1" placeholder="Item 1">
+    <input type="text" id="item2" placeholder="Item 2">
+    <input type="text" id="item3" placeholder="Item 3">
+    <input type="text" id="item4" placeholder="Item 4">
+    <input type="text" id="item5" placeholder="Item 5">
+    <input type="text" id="item6" placeholder="Item 6">
+    <input type="text" id="item7" placeholder="Item 7">
+    <input type="text" id="item8" placeholder="Item 8">
+    <input type="text" id="item9" placeholder="Item 9">
+    <input type="text" id="item10" placeholder="Item 10">
+    <button onclick="adicionarLista()">Adicionar Lista</button>
+</div>
+
+<div id="lista"></div>
+
+<script>
+function adicionarLista() {
+    const listaDiv = document.getElementById('lista');
+    const novosItens = [];
+
+    for (let i = 1; i <= 10; i++) {
+        const item = document.getElementById(`item${i}`).value.trim();
+        if (item !== '') {
+            novosItens.push(item);
+        }
+    }
+   
+    if (novosItens.length > 0) {
+        const ol = document.createElement('ol');
+        
+      
+        for (let i = novosItens.length - 1; i >= 0; i--) {
+            const li = document.createElement('li');
+            li.textContent = novosItens[i];
+            ol.appendChild(li);
+        }
+
+        listaDiv.appendChild(ol);
+    
+
+        for (let i = 1; i <= 10; i++) {
+            document.getElementById(`item${i}`).value = '';
+        }
+    }
+}
+</script>
+
+</body>
+</html>
